@@ -53,15 +53,20 @@ export const FavoriteShows: React.FC = () => {
     setCanScrollRight(scrollLeft < scrollWidth - clientWidth);
   };
 
+  // Calculate scroll distance for 3 movies at a time
+  // Each movie: w-32 (128px) + gap-4 (16px) = 144px per movie
+  // For 3 movies: 3 × 144px = 432px
+  const scrollDistance = 432;
+
   const scrollLeft = () => {
     if (!scrollRef.current) return;
-    scrollRef.current.scrollBy({ left: -150, behavior: 'smooth' });
+    scrollRef.current.scrollBy({ left: -scrollDistance, behavior: 'smooth' });
     setTimeout(checkScrollPosition, 300);
   };
 
   const scrollRight = () => {
     if (!scrollRef.current) return;
-    scrollRef.current.scrollBy({ left: 150, behavior: 'smooth' });
+    scrollRef.current.scrollBy({ left: scrollDistance, behavior: 'smooth' });
     setTimeout(checkScrollPosition, 300);
   };
 
@@ -124,7 +129,7 @@ export const FavoriteShows: React.FC = () => {
             {favoriteShows.map((show, index) => (
               <motion.div
                 key={show.title}
-                className="group relative flex-shrink-0 w-32 aspect-[2/3] bg-[rgba(255,255,255,0.03)] rounded-xl overflow-hidden border border-[rgba(255,255,255,0.08)] hover:border-[rgba(255,255,255,0.2)] transition-all duration-300 cursor-pointer"
+                className="group relative flex-shrink-0 w-32 aspect-[2/3] bg-[rgba(255,255,255,0.03)] rounded-xl overflow-hidden border border-[rgba(255,255,255,0.08)] hover:border-[rgba(255,255,255,0.2)] transition-all duration-300"
                 initial={{ opacity: 0, x: 20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.4, delay: 2.7 + index * 0.1 }}
