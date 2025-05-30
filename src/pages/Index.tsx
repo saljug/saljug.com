@@ -6,6 +6,7 @@ import { VenturesList } from '@/components/profile/VenturesList';
 import { AboutMe } from '@/components/profile/AboutMe';
 import { YouTubeSection } from '@/components/profile/YouTubeSection';
 import { TravelMap } from '@/components/profile/TravelMap';
+import { FavoriteShows } from '@/components/profile/FavoriteShows';
 import { NewsletterSection } from '@/components/profile/NewsletterSection';
 import { Footer } from '@/components/profile/Footer';
 import { AnimatedBackground } from '@/components/background/AnimatedBackground';
@@ -121,6 +122,8 @@ export default function Index() {
             />
 
             <TravelMap />
+
+            <FavoriteShows />
 
             <NewsletterSection />
 
