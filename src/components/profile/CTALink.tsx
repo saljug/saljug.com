@@ -30,7 +30,7 @@ export const CTALink: React.FC<CTALinkProps> = ({
           <Icon
             icon={icon}
             className="w-8 h-8 text-white"
-          />
+        />
         </div>
         <div className="self-stretch flex flex-col items-stretch justify-center my-auto">
           <div className="text-white text-xl font-bold group-hover:text-gray-200 transition-colors duration-200">

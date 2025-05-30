@@ -47,11 +47,11 @@ export const VenturesList: React.FC<VenturesListProps> = ({ ventures }) => {
           >
             <div className="self-stretch flex min-w-60 max-md:min-w-0 items-center gap-6 max-md:gap-4 my-auto max-md:max-w-full flex-1">
               <div className="aspect-[1] w-16 h-16 max-md:w-12 max-md:h-12 self-stretch shrink-0 my-auto rounded-2xl max-md:rounded-xl bg-[rgba(31,31,31,1)] flex items-center justify-center group-hover:bg-[rgba(41,41,41,1)] transition-colors duration-200 p-1">
-                <img
-                  src={venture.icon}
+              <img
+                src={venture.icon}
                   alt={venture.title}
                   className="w-full h-full object-cover rounded-xl max-md:rounded-lg transition-all duration-200"
-                />
+              />
               </div>
               <div className="self-stretch flex min-w-60 max-md:min-w-0 flex-col items-stretch justify-center w-[386px] max-md:w-auto my-auto flex-1 overflow-hidden">
                 <div className="text-white text-xl max-md:text-lg font-bold group-hover:text-gray-200 transition-colors duration-200 truncate" title={venture.title}>

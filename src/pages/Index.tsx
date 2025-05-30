@@ -5,8 +5,10 @@ import { CTALink } from '@/components/profile/CTALink';
 import { VenturesList } from '@/components/profile/VenturesList';
 import { AboutMe } from '@/components/profile/AboutMe';
 import { YouTubeSection } from '@/components/profile/YouTubeSection';
+import { TravelMap } from '@/components/profile/TravelMap';
 import { NewsletterSection } from '@/components/profile/NewsletterSection';
 import { Footer } from '@/components/profile/Footer';
+import { AnimatedBackground } from '@/components/background/AnimatedBackground';
 
 const socialLinks = [
   { 
@@ -79,13 +81,14 @@ const aboutMeData = {
 
 export default function Index() {
   return (
-    <div className="bg-black overflow-hidden">
-      <main className="flex w-full flex-col items-center justify-center p-4 max-md:max-w-full">
-        <div className="flex w-full max-w-[1440px] flex-col overflow-visible items-center pt-[70px] pb-4 px-4 max-md:max-w-full">
+    <div className="bg-black overflow-hidden relative">
+      <AnimatedBackground />
+      <main className="flex w-full flex-col items-center justify-center p-4 max-md:max-w-full relative z-10">
+        <div className="flex w-full max-w-[1440px] flex-col overflow-visible items-center pt-[70px] pb-[50px] px-4 max-md:max-w-full">
           <div className="flex w-[560px] max-w-full flex-col items-stretch overflow-visible">
             <ProfileHeader
               name="Saljug Mahmudlu"
-              description="i create useful stuffs for everyone"
+              description="i create useful things for everyone"
               website="saljug.com"
               avatarUrl="/profile.jpg"
             />
@@ -117,12 +120,52 @@ export default function Index() {
               isVisible={false}
             />
 
+            <TravelMap />
+
             <NewsletterSection />
 
             <Footer />
           </div>
         </div>
       </main>
+      
+      {/* Progressive blur effect at top */}
+      <div className="fixed top-0 left-0 right-0 h-32 pointer-events-none z-10">
+        <div 
+          className="w-full h-full"
+          style={{
+            background: 'linear-gradient(to bottom, rgba(0, 0, 0, 0.75) 0%, rgba(0, 0, 0, 0.5) 30%, rgba(0, 0, 0, 0.25) 60%, transparent 100%)',
+            backdropFilter: 'blur(0px) saturate(100%)',
+            maskImage: 'linear-gradient(to bottom, black 0%, black 20%, transparent 80%)'
+          }}
+        />
+        <div 
+          className="absolute top-0 left-0 right-0 h-20"
+          style={{
+            backdropFilter: 'blur(9.2px) saturate(120%)',
+            maskImage: 'linear-gradient(to bottom, black 0%, transparent 100%)'
+          }}
+        />
+      </div>
+      
+      {/* Progressive blur effect at bottom */}
+      <div className="fixed bottom-0 left-0 right-0 h-32 pointer-events-none z-10">
+        <div 
+          className="w-full h-full"
+          style={{
+            background: 'linear-gradient(to top, rgba(0, 0, 0, 0.75) 0%, rgba(0, 0, 0, 0.5) 30%, rgba(0, 0, 0, 0.25) 60%, transparent 100%)',
+            backdropFilter: 'blur(0px) saturate(100%)',
+            maskImage: 'linear-gradient(to top, black 0%, black 20%, transparent 80%)'
+          }}
+        />
+        <div 
+          className="absolute bottom-0 left-0 right-0 h-20"
+          style={{
+            backdropFilter: 'blur(9.2px) saturate(120%)',
+            maskImage: 'linear-gradient(to top, black 0%, transparent 100%)'
+          }}
+        />
+      </div>
     </div>
   );
 }

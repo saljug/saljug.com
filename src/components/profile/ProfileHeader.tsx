@@ -44,7 +44,12 @@ export const ProfileHeader: React.FC<ProfileHeaderProps> = ({
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.3 }}
         >
-          {description}
+          <span className="md:hidden">
+            i create useful things<br />for everyone
+          </span>
+          <span className="hidden md:inline">
+            {description}
+          </span>
         </motion.p>
         <motion.a 
           href="https://saljug.com"

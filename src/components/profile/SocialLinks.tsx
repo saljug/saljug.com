@@ -27,7 +27,10 @@ export const SocialLinks: React.FC<SocialLinksProps> = ({ links }) => {
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.4, delay: 0.6 + index * 0.1 }}
-          whileHover={{ y: -3 }}
+          whileHover={{ 
+            y: -3, 
+            transition: { duration: 0.1, ease: "easeInOut" } 
+          }}
           whileTap={{ scale: 0.95 }}
           style={{ zIndex: 10 }}
         >
@@ -35,13 +38,15 @@ export const SocialLinks: React.FC<SocialLinksProps> = ({ links }) => {
             href={link.url}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex w-[52px] h-[52px] max-md:w-[48px] max-md:h-[48px] items-center overflow-visible justify-center rounded-xl max-md:rounded-lg bg-[rgba(21,21,21,1)] hover:bg-[rgba(31,31,31,1)] backdrop-blur-sm border border-[rgba(255,255,255,0.05)] hover:border-[rgba(255,255,255,0.1)] transition-all duration-150 group relative"
+            className="flex w-[52px] h-[52px] max-md:w-[48px] max-md:h-[48px] items-center overflow-visible justify-center rounded-xl max-md:rounded-lg bg-[rgba(21,21,21,1)] hover:bg-[rgba(31,31,31,1)] backdrop-blur-sm border border-[rgba(255,255,255,0.05)] hover:border-[rgba(255,255,255,0.1)] group relative"
             aria-label={link.label}
+            style={{ transition: 'all 100ms ease-in-out' }}
           >
             <img
               src={link.icon}
               alt={link.label}
-              className="w-6 h-6 max-md:w-5 max-md:h-5 object-contain transition-all duration-150 group-hover:brightness-0 group-hover:invert"
+              className="w-6 h-6 max-md:w-5 max-md:h-5 object-contain group-hover:brightness-0 group-hover:invert"
+              style={{ transition: 'all 100ms ease-in-out' }}
             />
           </a>
         </motion.div>
