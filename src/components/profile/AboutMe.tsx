@@ -50,6 +50,16 @@ export const AboutMe: React.FC<AboutMeProps> = ({ bio, skills, currentFocus, sho
               {paragraph}
             </motion.p>
           ))}
+          <motion.div
+            className="flex justify-start mt-4"
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 1.7 }}
+          >
+            <span className="bg-[rgba(41,41,41,1)] text-white text-sm max-md:text-xs font-medium px-3 py-1.5 rounded-full border border-[rgba(255,255,255,0.1)]">
+              ENTJ
+            </span>
+          </motion.div>
         </motion.div>
 
         {/* Skills Section */}
