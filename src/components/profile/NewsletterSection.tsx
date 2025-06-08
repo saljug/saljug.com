@@ -8,6 +8,10 @@ interface NotificationProps {
   onClose: () => void;
 }
 
+interface NewsletterSectionProps {
+  isVisible?: boolean;
+}
+
 const Notification: React.FC<NotificationProps> = ({ message, type, onClose }) => {
   return (
     <motion.div
@@ -40,7 +44,11 @@ const Notification: React.FC<NotificationProps> = ({ message, type, onClose }) =
   );
 };
 
-export const NewsletterSection: React.FC = () => {
+export const NewsletterSection: React.FC<NewsletterSectionProps> = ({ isVisible = true }) => {
+  if (!isVisible) {
+    return null;
+  }
+
   const [email, setEmail] = useState('');
   const [notification, setNotification] = useState<{ message: string; type: 'success' | 'error' } | null>(null);
 

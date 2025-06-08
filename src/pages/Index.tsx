@@ -46,6 +46,18 @@ const socialLinks = [
 
 const ventures = [
   {
+    title: 'Calistant',
+    description: 'Your AI nutrition assistant',
+    icon: '/calistant.jpg',
+    url: 'https://calistant.com',
+  },
+  {
+    title: 'Panodex',
+    description: 'Manage your clipboard history in one sidebar',
+    icon: '/panodex.jpg',
+    url: 'https://chromewebstore.google.com/detail/kofagcjplkdlbfefcppaicipbeobphmc?utm_source=item-share-cb',
+  },
+  {
     title: 'LinkStash',
     description: 'Save and organize your favorite links with ease',
     icon: '/linkstash.png',
@@ -90,7 +102,7 @@ export default function Index() {
             <ProfileHeader
               name="Saljug Mahmudlu"
               description="i create useful things for everyone"
-              website="saljug.com"
+              website="calistant.com"
               avatarUrl="/profile.jpg"
             />
             
@@ -125,7 +137,7 @@ export default function Index() {
 
             <FavoriteShows />
 
-            <NewsletterSection />
+            <NewsletterSection isVisible={false} />
 
             <Footer />
           </div>
