@@ -48,7 +48,7 @@ const ventures = [
   {
     title: 'Calistant',
     description: 'Your AI nutrition assistant',
-    icon: '/calistant.jpg',
+    icon: '/calistant.png',
     url: 'https://calistant.com',
   },
   {
