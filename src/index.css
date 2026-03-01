@@ -49,6 +49,13 @@
     --sidebar-border: 220 13% 91%;
 
     --sidebar-ring: 217.2 91.2% 59.8%;
+    --profile-surface: 21 21 21;
+    --profile-surface-hover: 31 31 31;
+    --profile-border: 255 255 255;
+    --profile-muted: 167 167 167;
+    --profile-body: 188 188 188;
+    --profile-radius-lg: 22px;
+    --profile-radius-md: 14px;
   }
 
   .dark {
@@ -96,7 +103,108 @@
   }
 
   body {
-    @apply bg-background text-foreground font-rethink;
+    @apply bg-background text-foreground font-sans antialiased;
+    font-family: "Google Sans Flex", "Rethink Sans", "Segoe UI", system-ui, -apple-system, sans-serif;
+    letter-spacing: -0.01em;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  button,
+  input,
+  textarea,
+  select,
+  a {
+    font-family: inherit;
+  }
+}
+
+@layer components {
+  .profile-section {
+    @apply w-full mt-8 max-md:mt-6 max-md:max-w-full;
+  }
+
+  .profile-section-title {
+    @apply px-4 max-md:px-0 text-white text-xl max-md:text-lg font-semibold tracking-tight;
+  }
+
+  .profile-card {
+    background: rgba(var(--profile-surface), 0.92);
+    border: 1px solid rgba(var(--profile-border), 0.08);
+    border-radius: var(--profile-radius-lg);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 12px 34px rgba(0, 0, 0, 0.22);
+  }
+
+  .profile-card-hover {
+    transition: background-color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+  }
+
+  .profile-card-hover:hover {
+    background: rgba(var(--profile-surface-hover), 0.94);
+    border-color: rgba(var(--profile-border), 0.13);
+    box-shadow: 0 16px 38px rgba(0, 0, 0, 0.3);
+  }
+
+  .profile-chip {
+    background: rgba(var(--profile-surface-hover), 0.95);
+    border: 1px solid rgba(var(--profile-border), 0.08);
+    border-radius: 999px;
+    color: rgba(var(--profile-body), 0.95);
+    transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+  }
+
+  .profile-chip:hover {
+    border-color: rgba(var(--profile-border), 0.14);
+    color: #fff;
+  }
+
+  .profile-icon-tile {
+    width: 52px;
+    height: 52px;
+    border-radius: var(--profile-radius-md);
+    background: rgba(var(--profile-surface), 0.95);
+    border: 1px solid rgba(var(--profile-border), 0.08);
+    backdrop-filter: blur(8px);
+    transition: background-color 0.15s ease, border-color 0.15s ease, transform 0.15s ease;
+  }
+
+  .profile-icon-tile:hover {
+    background: rgba(var(--profile-surface-hover), 0.96);
+    border-color: rgba(var(--profile-border), 0.13);
+  }
+
+  .profile-muted {
+    color: rgba(var(--profile-muted), 1);
+  }
+
+  .profile-body {
+    color: rgba(var(--profile-body), 0.95);
+  }
+
+  @media (max-width: 768px) {
+    .profile-card {
+      border-radius: 16px;
+    }
+
+    .profile-icon-tile {
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+    }
+  }
+
+  /* Social icons: #747474 default, white on hover */
+  .social-icon-link .social-icon-img {
+    filter: brightness(0) saturate(100%) invert(0.46);
+    transition: filter 0.15s ease;
+  }
+  .social-icon-link:hover .social-icon-img {
+    filter: brightness(0) saturate(100%) invert(1);
   }
 }
 

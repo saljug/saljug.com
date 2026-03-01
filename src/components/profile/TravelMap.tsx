@@ -127,14 +127,14 @@ export const TravelMap: React.FC = () => {
 
   return (
     <motion.section 
-      className="w-full mt-8 max-md:mt-6 max-md:max-w-full"
+      className="profile-section"
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6, delay: 2.0 }}
     >
-      <div className="flex items-center justify-between mb-[18px] max-md:mb-4 px-4 max-md:px-0">
+      <div className="flex items-center justify-between mb-4 max-md:mb-3 px-4 max-md:px-0">
         <motion.h2 
-          className="text-white text-xl max-md:text-lg font-medium"
+          className="text-white text-xl max-md:text-lg font-semibold tracking-tight"
           initial={{ opacity: 0, x: -20 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.6, delay: 2.1 }}
@@ -144,7 +144,7 @@ export const TravelMap: React.FC = () => {
       </div>
 
       <motion.div 
-        className="relative bg-[rgba(21,21,21,1)] backdrop-blur-sm border border-[rgba(255,255,255,0.05)] rounded-3xl max-md:rounded-2xl overflow-hidden h-[350px]"
+        className="profile-card relative overflow-hidden h-[350px]"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.4, ease: "easeOut", delay: 2.2 }}
@@ -210,10 +210,10 @@ export const TravelMap: React.FC = () => {
         {/* Statistics */}
         <div className="absolute bottom-4 left-6 right-6 max-md:left-4 max-md:right-4 z-[1000]">
           <div className="flex justify-between text-sm">
-            <span className="text-gray-400">
+            <span className="profile-muted">
               {visitedCities.length} cities visited
             </span>
-            <span className="text-gray-400">
+            <span className="profile-muted">
               {new Set(visitedCities.map(city => city.country)).size} countries
             </span>
           </div>

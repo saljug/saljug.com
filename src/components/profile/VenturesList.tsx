@@ -1,74 +1,108 @@
 import React from 'react';
-import { Icon } from '@iconify/react';
 import { motion } from 'framer-motion';
+import { BlurFade } from '@/components/ui/blur-fade';
 
 interface Venture {
   title: string;
   description: string;
-  icon: string;
+  icon?: string;
+  iconBg?: string;
   url: string;
 }
 
 interface VenturesListProps {
   ventures: Venture[];
+  sectionLabel?: string;
 }
 
-export const VenturesList: React.FC<VenturesListProps> = ({ ventures }) => {
+export const VenturesList: React.FC<VenturesListProps> = ({
+  ventures,
+  sectionLabel = 'Startups',
+}) => {
   return (
-    <motion.section 
-      className="w-full mt-8 max-md:mt-6 max-md:max-w-full"
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.6, delay: 0.8 }}
-    >
-      <motion.h2 
-        className="text-white text-xl max-md:text-lg font-medium max-md:max-w-full px-4 max-md:px-0"
-        initial={{ opacity: 0, x: -20 }}
-        animate={{ opacity: 1, x: 0 }}
-        transition={{ duration: 0.6, delay: 0.9 }}
-      >
-        Ventures
-      </motion.h2>
-      <div className="w-full mt-[18px] max-md:mt-4 max-md:max-w-full">
-        {ventures.map((venture, index) => (
-          <motion.a
-            key={index}
-            href={venture.url}
-            target="_blank"
-            rel="noopener noreferrer"
-            className={`bg-[rgba(21,21,21,1)] hover:bg-[rgba(31,31,31,1)] backdrop-blur-sm border border-[rgba(255,255,255,0.05)] hover:border-[rgba(255,255,255,0.1)] transition-all duration-200 flex min-h-20 max-md:min-h-16 w-full items-center gap-[30px] max-md:gap-4 overflow-hidden justify-between flex-wrap pl-2 pr-6 max-md:pl-3 max-md:pr-4 rounded-3xl max-md:rounded-2xl max-md:max-w-full max-md:pr-5 group hover:shadow-[0_8px_32px_rgba(0,0,0,0.3)] ${
-              index > 0 ? 'mt-3 max-md:mt-2' : ''
-            }`}
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 1.0 + index * 0.1 }}
-            whileHover={{ y: -3, transition: { duration: 0.2 } }}
-            whileTap={{ scale: 0.98 }}
-          >
-            <div className="self-stretch flex min-w-60 max-md:min-w-0 items-center gap-6 max-md:gap-4 my-auto max-md:max-w-full flex-1">
-              <div className="aspect-[1] w-16 h-16 max-md:w-12 max-md:h-12 self-stretch shrink-0 my-auto rounded-2xl max-md:rounded-xl bg-[rgba(31,31,31,1)] flex items-center justify-center group-hover:bg-[rgba(41,41,41,1)] transition-colors duration-200 p-1">
-              <img
-                src={venture.icon}
-                  alt={venture.title}
-                  className="w-full h-full object-cover rounded-xl max-md:rounded-lg transition-all duration-200"
-              />
-              </div>
-              <div className="self-stretch flex min-w-60 max-md:min-w-0 flex-col items-stretch justify-center w-[386px] max-md:w-auto my-auto flex-1 overflow-hidden">
-                <div className="text-white text-xl max-md:text-lg font-bold group-hover:text-gray-200 transition-colors duration-200 truncate" title={venture.title}>
-                  {venture.title}
+    <BlurFade delay={0} duration={0.45} inView={true} inViewMargin="-48px">
+      <section className="flex flex-col" style={{ gap: 24 }}>
+        <span
+          className="font-semibold uppercase tracking-wider"
+          style={{
+            fontSize: 12,
+            lineHeight: '16px',
+            color: '#747474',
+            fontFamily: '"Google Sans Flex", system-ui, sans-serif',
+            letterSpacing: '0.06em',
+          }}
+        >
+          {sectionLabel}
+        </span>
+
+        <div className="flex flex-col gap-3">
+          {ventures.map((venture, index) => (
+            <BlurFade
+              key={index}
+              delay={index * 0.08}
+              duration={0.4}
+              inView={true}
+              inViewMargin="-32px"
+            >
+              <motion.a
+                href={venture.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-4 rounded-2xl transition-colors duration-150"
+                style={{ padding: 14, background: '#121212' }}
+                whileHover={{ backgroundColor: '#181818' }}
+                whileTap={{ scale: 0.99 }}
+              >
+                {/* Icon */}
+                <div
+                  className="flex-shrink-0 flex items-center justify-center overflow-hidden"
+                  style={{
+                    width: 48,
+                    height: 48,
+                    borderRadius: 6,
+                    background: venture.iconBg ?? '#1a1a1a',
+                  }}
+                >
+                  {venture.icon && (
+                    <img
+                      src={venture.icon}
+                      alt={venture.title}
+                      className="w-full h-full object-cover"
+                      style={{ borderRadius: 6 }}
+                    />
+                  )}
                 </div>
-                <div className="text-[rgba(118,118,118,1)] text-base max-md:text-sm font-normal mt-1 group-hover:text-gray-300 transition-colors duration-200 truncate max-md:line-clamp-2" title={venture.description}>
-                  {venture.description}
+
+                {/* Text */}
+                <div className="flex flex-col" style={{ gap: 2 }}>
+                  <span
+                    className="font-medium"
+                    style={{
+                      fontSize: 16,
+                      lineHeight: '24px',
+                      color: '#ffffff',
+                      fontFamily: '"Google Sans Flex", system-ui, sans-serif',
+                    }}
+                  >
+                    {venture.title}
+                  </span>
+                  <span
+                    className="font-normal line-clamp-2"
+                    style={{
+                      fontSize: 14,
+                      lineHeight: '20px',
+                      color: '#747474',
+                      fontFamily: '"Google Sans Flex", system-ui, sans-serif',
+                    }}
+                  >
+                    {venture.description}
+                  </span>
                 </div>
-              </div>
-            </div>
-            <Icon
-              icon="solar:external-link-outline"
-              className="w-6 h-6 max-md:w-5 max-md:h-5 text-[rgba(118,118,118,1)] group-hover:text-white transition-all duration-200 group-hover:translate-x-1 group-hover:-translate-y-1 flex-shrink-0"
-            />
-          </motion.a>
-        ))}
-      </div>
-    </motion.section>
+              </motion.a>
+            </BlurFade>
+          ))}
+        </div>
+      </section>
+    </BlurFade>
   );
 };

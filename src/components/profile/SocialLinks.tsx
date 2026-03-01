@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { BlurFade } from '@/components/ui/blur-fade';
 
 interface SocialLink {
   icon: string;
@@ -10,47 +11,34 @@ interface SocialLink {
 
 interface SocialLinksProps {
   links: SocialLink[];
+  iconSize?: number;
 }
 
-export const SocialLinks: React.FC<SocialLinksProps> = ({ links }) => {
+export const SocialLinks: React.FC<SocialLinksProps> = ({ links, iconSize = 20 }) => {
   return (
-    <motion.div 
-      className="flex w-full items-center gap-[11px] max-md:gap-2 overflow-visible justify-center flex-wrap mt-6 max-md:mt-4 px-4"
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.6, delay: 0.5 }}
-    >
-      {links.map((link, index) => (
-        <motion.div
-          key={index}
-          className="self-stretch flex min-h-[52px] max-md:min-h-[48px] flex-col items-stretch justify-center w-[52px] max-md:w-[48px] my-auto"
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.4, delay: 0.6 + index * 0.1 }}
-          whileHover={{ 
-            y: -3, 
-            transition: { duration: 0.1, ease: "easeInOut" } 
-          }}
-          whileTap={{ scale: 0.95 }}
-          style={{ zIndex: 10 }}
-        >
-          <a
+    <BlurFade delay={0.2} duration={0.4} inView={false}>
+      <div className="flex items-center" style={{ gap: 24 }}>
+        {links.map((link, index) => (
+          <motion.a
+            key={index}
             href={link.url}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex w-[52px] h-[52px] max-md:w-[48px] max-md:h-[48px] items-center overflow-visible justify-center rounded-xl max-md:rounded-lg bg-[rgba(21,21,21,1)] hover:bg-[rgba(31,31,31,1)] backdrop-blur-sm border border-[rgba(255,255,255,0.05)] hover:border-[rgba(255,255,255,0.1)] group relative"
             aria-label={link.label}
-            style={{ transition: 'all 100ms ease-in-out' }}
+            className="social-icon-link flex items-center justify-center"
+            whileTap={{ scale: 0.92 }}
           >
             <img
               src={link.icon}
               alt={link.label}
-              className="w-6 h-6 max-md:w-5 max-md:h-5 object-contain group-hover:brightness-0 group-hover:invert"
-              style={{ transition: 'all 100ms ease-in-out' }}
+              width={iconSize}
+              height={iconSize}
+              className="social-icon-img block"
+              style={{ width: iconSize, height: iconSize, objectFit: 'contain' }}
             />
-          </a>
-        </motion.div>
-      ))}
-    </motion.div>
+          </motion.a>
+        ))}
+      </div>
+    </BlurFade>
   );
 };

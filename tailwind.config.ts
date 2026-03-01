@@ -20,6 +20,7 @@ export default {
 		},
 		extend: {
 			fontFamily: {
+				sans: ['"Google Sans Flex"', 'Rethink Sans', 'ui-sans-serif', 'system-ui', 'sans-serif'],
 				'rethink': ['Rethink Sans', 'sans-serif'],
 			},
 			colors: {
