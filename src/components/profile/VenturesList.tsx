@@ -48,20 +48,15 @@ export const VenturesList: React.FC<VenturesListProps> = ({
                 href={venture.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-4 rounded-2xl transition-colors duration-150"
-                style={{ padding: 14, background: '#121212' }}
+                className="flex items-center gap-3 rounded-2xl p-3 transition-colors duration-150 sm:gap-4 sm:p-[14px]"
+                style={{ background: '#121212' }}
                 whileHover={{ backgroundColor: '#181818' }}
                 whileTap={{ scale: 0.99 }}
               >
                 {/* Icon */}
                 <div
-                  className="flex-shrink-0 flex items-center justify-center overflow-hidden"
-                  style={{
-                    width: 48,
-                    height: 48,
-                    borderRadius: 6,
-                    background: venture.iconBg ?? '#1a1a1a',
-                  }}
+                  className="flex h-10 w-10 flex-shrink-0 items-center justify-center overflow-hidden rounded-[6px] sm:h-12 sm:w-12"
+                  style={{ background: venture.iconBg ?? '#1a1a1a' }}
                 >
                   {venture.icon && (
                     <img

@@ -22,14 +22,10 @@ export const Footer: React.FC<FooterProps> = ({
   return (
     <BlurFade delay={0.1} duration={0.4} inView={true} inViewMargin="-80px">
       <footer
-        className="flex items-center justify-between"
-        style={{
-          minHeight: 115,
-          borderTop: '1px solid #171717',
-        }}
+        className="flex min-h-[80px] flex-wrap items-center justify-between gap-4 border-t border-[#171717] py-5 sm:min-h-[115px] sm:py-0"
       >
         {/* Social icons */}
-        <div className="flex items-center" style={{ gap: 24 }}>
+        <div className="flex items-center gap-4 sm:gap-6">
           {socialLinks.map((link, index) => (
             <a
               key={index}
@@ -53,13 +49,8 @@ export const Footer: React.FC<FooterProps> = ({
 
         {/* Copyright */}
         <span
-          style={{
-            fontSize: 12,
-            lineHeight: '16px',
-            color: '#747474',
-            fontFamily: '"Google Sans Flex", system-ui, sans-serif',
-            fontWeight: 400,
-          }}
+          className="text-xs leading-4 text-[#747474]"
+          style={{ fontFamily: '"Google Sans Flex", system-ui, sans-serif', fontWeight: 400 }}
         >
           © {year} {copyrightName}
         </span>

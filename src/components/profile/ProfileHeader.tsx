@@ -9,7 +9,7 @@ interface ProfileHeaderProps {
 
 export const ProfileHeader: React.FC<ProfileHeaderProps> = ({ name, subtitle }) => {
   return (
-    <header className="flex flex-col items-start gap-7">
+    <header className="flex flex-col items-start gap-5 sm:gap-7">
       <BlurFade delay={0} duration={0.4} inView={false}>
         <img
           src="/selcuk.png"
@@ -27,8 +27,8 @@ export const ProfileHeader: React.FC<ProfileHeaderProps> = ({ name, subtitle }) 
         duration={0.6}
         startOnView={false}
         once
-        className="text-white font-bold leading-none tracking-tight"
-        style={{ fontSize: 48, lineHeight: '48px', fontFamily: '"Google Sans Flex", system-ui, sans-serif' }}
+        className="text-white font-bold leading-tight tracking-tight text-[28px] sm:text-[48px] sm:leading-[48px]"
+        style={{ fontFamily: '"Google Sans Flex", system-ui, sans-serif' }}
       >
         {name}
       </TextAnimate>
@@ -41,8 +41,8 @@ export const ProfileHeader: React.FC<ProfileHeaderProps> = ({ name, subtitle }) 
         duration={0.5}
         startOnView={false}
         once
-        className="font-medium"
-        style={{ fontSize: 20, lineHeight: '28px', color: '#747474', fontFamily: '"Google Sans Flex", system-ui, sans-serif' }}
+        className="font-medium text-base sm:text-xl sm:leading-7"
+        style={{ color: '#747474', fontFamily: '"Google Sans Flex", system-ui, sans-serif' }}
       >
         {subtitle}
       </TextAnimate>

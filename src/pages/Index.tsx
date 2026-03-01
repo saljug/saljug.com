@@ -48,18 +48,11 @@ export default function Index() {
       style={{ background: '#0A0A0A' }}
     >
       <main
-        className="mx-auto flex flex-1 flex-col"
-        style={{
-          maxWidth: 576,
-          paddingTop: 64,
-          paddingBottom: 64,
-          paddingLeft: 24,
-          paddingRight: 24,
-          gap: 64,
-        }}
+        className="mx-auto flex flex-1 flex-col gap-12 px-4 pt-12 pb-12 sm:gap-16 sm:px-6 sm:pt-16 sm:pb-16"
+        style={{ maxWidth: 576 }}
       >
         {/* Profile info block */}
-        <div className="flex flex-col" style={{ gap: 28 }}>
+        <div className="flex flex-col gap-6 sm:gap-7">
           <ProfileHeader
             name="saljug mahmudlu"
             subtitle="co-founder & ceo @ adject"
@@ -72,7 +65,7 @@ export default function Index() {
       </main>
 
       {/* Footer at bottom */}
-      <div className="mx-auto w-full" style={{ maxWidth: 576, paddingLeft: 24, paddingRight: 24 }}>
+      <div className="mx-auto w-full px-4 sm:px-6" style={{ maxWidth: 576 }}>
         <Footer socialLinks={socialLinks} copyrightName="Saljug Mahmudlu" />
       </div>
     </div>

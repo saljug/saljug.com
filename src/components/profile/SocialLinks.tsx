@@ -17,7 +17,7 @@ interface SocialLinksProps {
 export const SocialLinks: React.FC<SocialLinksProps> = ({ links, iconSize = 20 }) => {
   return (
     <BlurFade delay={0.2} duration={0.4} inView={false}>
-      <div className="flex items-center" style={{ gap: 24 }}>
+      <div className="flex items-center gap-5 sm:gap-6">
         {links.map((link, index) => (
           <motion.a
             key={index}
