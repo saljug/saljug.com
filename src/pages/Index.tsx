@@ -3,6 +3,7 @@ import { ProfileHeader } from '@/components/profile/ProfileHeader';
 import { SocialLinks } from '@/components/profile/SocialLinks';
 import { VenturesList } from '@/components/profile/VenturesList';
 import { Footer } from '@/components/profile/Footer';
+import { HackathonsList } from '@/components/profile/HackathonsList';
 
 const socialLinks = [
   {
@@ -41,6 +42,19 @@ const ventures = [
   },
 ];
 
+const hackathons = [
+  {
+    title: '3rd | YTU Startup House',
+    date: 'May 2025',
+    icon: '/startup-house.png',
+  },
+  {
+    title: '4th | Meta x YTU Startup House',
+    date: 'Oct 2025',
+    icon: '/meta-logo.avif',
+  },
+];
+
 export default function Index() {
   return (
     <div
@@ -62,6 +76,9 @@ export default function Index() {
 
         {/* Startups */}
         <VenturesList ventures={ventures} sectionLabel="Startups" />
+
+        {/* Hackathons */}
+        <HackathonsList hackathons={hackathons} sectionLabel="Hackathons" />
       </main>
 
       {/* Footer at bottom */}
